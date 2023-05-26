@@ -17,7 +17,7 @@
 	int totalCnt = teacherDao.selectTeacherCnt();
 	
 	// 페이징 변수 선언
-	int rowPerPage = 5;
+	int rowPerPage = 10;
 	int beginRow = (currentPage - 1) * rowPerPage;
 	
 	int pagePerPage = 10;
@@ -54,20 +54,37 @@
 		table{
 			width: 100%;
 			border: 1px solid #333333;
+			border-collapse: collapse;
 			padding: 5px;
 		}
-		td{
+		td, th{
 			border: 1px solid #333333;
 			padding: 10px;
 		}
+		th{
+			background-color: lightblue;
+		}
 		a{
-			color: blue;
-			text-decoration: underline;
+			width: 100px;
+			height: 30px;
+			padding: 5px;
+			border-radius: 4px;
+			border: 1px solid #333333;
+			background-color: FloralWhite;
+			color: #333333;
+			text-decoration: none;
+		}
+		a:hover{
+			background-color: beige;
 		}
 		.selected{
 			color: red;
 			text-decoration: none;
 		}
+		.pagination a{
+			border-radius: 50%;
+		}
+
 	</style>
 </head>
 <body>
@@ -75,12 +92,12 @@
 		<h1>Teacher List</h1>
 		<table>
 			<tr>
-				<td>번호</td>
-				<td>아이디</td>
-				<td>성함</td>
-				<td>담당과목번호</td>
-				<td>담당과목</td>
-				<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<th>번호</th>
+				<th>아이디</th>
+				<th>성함</th>
+				<th>담당과목번호</th>
+				<th>담당과목</th>
+				<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
 			</tr>
 			<%
 				for(HashMap<String, Object> m : list){
@@ -92,7 +109,7 @@
 						<td><%=(String)m.get("teacherSubjectNo") %></td>
 						<td><%=(String)m.get("teacherSubjectName") %></td>
 						<td>
-							<a href="<%=request.getContextPath() %>/teacherOne.jsp?subjectNo=<%=(Integer)m.get("teacherNo")%>">상세보기</a>
+							<a href="<%=request.getContextPath() %>/teacherOne.jsp?teacherNo=<%=(Integer)m.get("teacherNo")%>">상세보기</a>
 						</td>
 					</tr>
 			<%
@@ -100,7 +117,7 @@
 			%>
 		</table>
 	</div>
-	<div class="container">
+	<div class="container pagination">
 			<%
 				if(startPage != 1){
 			%>
