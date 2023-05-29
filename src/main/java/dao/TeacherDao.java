@@ -42,10 +42,47 @@ public class TeacherDao {
 		return result;
 	}
 	public int updateTeacher(Teacher teacher) throws Exception {
-		return 9;
+		// 결과값을 저장해줄 변수 선언
+		int row = 0;
+		
+		// Connection 가져오기
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		
+		// teacher 정보를 업데이트 하는 쿼리
+		String sql = "update teacher set teacher_id = ?, teacher_name = ?, teacher_history = ? where teacher_no = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		
+		// ?값을 세팅
+		stmt.setString(1, teacher.getTeacherId());
+		stmt.setString(2, teacher.getTeacherName());
+		stmt.setString(3, teacher.getTeacherHistory());
+		stmt.setInt(4, teacher.getTeacherNo());
+		
+		// 실행 후 결과 값 저장
+		row = stmt.executeUpdate();
+		
+		return row;
 	}
 	public int deleteTeacher(int teacherNo) throws Exception {
-		return 0;
+		// 결과값을 저장할 변수 선언
+		int row = 0;
+		
+		// Connection 가져오기
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		
+		// teacherNo에 해당하는 정보를 삭제하는 쿼리
+		String sql = "delete from teacher where teacher_no = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		
+		// ?값 세팅
+		stmt.setInt(1, teacherNo);
+
+		// 실행 후 결과값 저장
+		row = stmt.executeUpdate();
+		
+		return row;
 	}
 	public ArrayList<HashMap<String, Object>> selectTeacherListByPage(int beginRow, int rowPerPage) throws Exception{
 		// 결과값을 저장해줄 HashMap list 선언
