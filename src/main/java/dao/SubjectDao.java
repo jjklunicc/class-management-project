@@ -52,7 +52,7 @@ public class SubjectDao {
 		Connection conn = dbUtil.getConnection();
 		
 		// 과목을 추가해줄 쿼리
-		String sql = "inset into subject(subject_name, subject_time, createdate, updatedate) values(?, ?, now(), now())";
+		String sql = "insert into subject(subject_name, subject_time, createdate, updatedate) values(?, ?, now(), now())";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		
 		// ?에 값 세팅
@@ -75,7 +75,7 @@ public class SubjectDao {
 		Connection conn = dbUtil.getConnection();
 		
 		// subjectNo에 해당하는 데이터를 삭제해주는 쿼리
-		String sql = "delete from subject where subjectNo = ?";
+		String sql = "delete from subject where subject_no = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		
 		// ?값 세팅

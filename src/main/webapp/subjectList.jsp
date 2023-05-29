@@ -54,33 +54,58 @@
 		table{
 			width: 100%;
 			border: 1px solid #333333;
+			border-collapse: collapse;
 			padding: 5px;
 		}
-		td{
+		td, th{
 			border: 1px solid #333333;
 			padding: 10px;
 		}
+		th{
+			background-color: lightblue;
+		}
 		a{
-			color: blue;
-			text-decoration: underline;
+			padding: 5px;
+			border-radius: 4px;
+			border: 1px solid #333333;
+			background-color: FloralWhite;
+			font-size: 16px;
+			color: #333333;
+			text-decoration: none;
+		}
+		a:hover{
+			background-color: beige;
 		}
 		.selected{
 			color: red;
 			text-decoration: none;
 		}
+		.pagination a{
+			border-radius: 50%;
+		}
+		h1{
+			position: relative;
+		}
+		h1 a{
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			font-weight: normal;
+		}
 	</style>
 </head>
 <body>
 	<div class="container">
-		<h1>Subject List</h1>
+		<h1>
+			Subject List
+			<a href="<%=request.getContextPath()%>/insertSubject.jsp">과목추가</a>	
+		</h1>
 		<table>
 			<tr>
-				<td>과목번호</td>
-				<td>과목이름</td>
-				<td>과목시수</td>
-				<td>생성일자</td>
-				<td>수정일자</td>
-				<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<th>과목번호</th>
+				<th>과목이름</th>
+				<th>과목시수</th>
+				<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
 			</tr>
 			<%
 				for(Subject sub : list){
@@ -89,8 +114,6 @@
 						<td><%=sub.getSubjectNo() %></td>
 						<td><%=sub.getSubjectName() %></td>
 						<td><%=sub.getSubjectTime() %></td>
-						<td><%=sub.getCreatedate() %></td>
-						<td><%=sub.getUpdatedate() %></td>
 						<td>
 							<a href="<%=request.getContextPath() %>/subjectOne.jsp?subjectNo=<%=sub.getSubjectNo()%>">상세보기</a>
 						</td>
@@ -100,7 +123,7 @@
 			%>
 		</table>
 	</div>
-	<div class="container">
+	<div class="container pagination">
 			<%
 				if(startPage != 1){
 			%>

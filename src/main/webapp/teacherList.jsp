@@ -65,12 +65,11 @@
 			background-color: lightblue;
 		}
 		a{
-			width: 100px;
-			height: 30px;
 			padding: 5px;
 			border-radius: 4px;
 			border: 1px solid #333333;
 			background-color: FloralWhite;
+			font-size: 16px;
 			color: #333333;
 			text-decoration: none;
 		}
@@ -84,12 +83,23 @@
 		.pagination a{
 			border-radius: 50%;
 		}
-
+		h1{
+			position: relative;
+		}
+		h1 a{
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			font-weight: normal;
+		}
 	</style>
 </head>
 <body>
-<div class="container">
-		<h1>Teacher List</h1>
+	<div class="container">
+		<h1>
+			Teacher List
+			<a href="<%=request.getContextPath()%>/insertTeacher.jsp">선생님등록</a>	
+		</h1>
 		<table>
 			<tr>
 				<th>번호</th>

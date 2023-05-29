@@ -49,10 +49,6 @@
 			width: 20%;
 		}
 		a{
-			display: gird;
-			place-items: center;
-			width: 100px;
-			height: 30px;
 			padding: 5px;
 			border-radius: 4px;
 			border: 1px solid #333333;

@@ -9,13 +9,6 @@
 		response.sendRedirect(request.getContextPath() + "/teacherList.jsp");
 		return;
 	}
-
-	// 이전페이지에서 넘어온 메시지 있으면 저장
-	String msg = "";
-	if(request.getParameter("msg") != null
-	&& request.getParameter("msg").equals("")){
-		msg = request.getParameter("msg");
-	}
 	
 	// 요청값 저장
 	int teacherNo = Integer.parseInt(request.getParameter("teacherNo"));
@@ -67,13 +60,24 @@
 			height: 30px;
 			color: red;
 		}
+		button{
+			padding: 5px;
+			border-radius: 4px;
+			border: 1px solid #333333;
+			background-color: FloralWhite;
+			font-size: 16px;
+			color: #333333;
+			cursor: pointer;
+		}
+		button:hover{
+			background-color: beige;
+		}
 	</style>
 </head>
 <body>
 	<form action="<%=request.getContextPath() %>/updateTeacherAction.jsp" method="post">
 		<div class="container">
 			<h1>Update Teacher Information</h1>
-			<div>&nbsp;<%=msg %>&nbsp;</div>
 			<table>
 				<tr>
 					<th>번호</th>
@@ -81,15 +85,15 @@
 				</tr>
 				<tr>	
 					<th>아이디</th>
-					<td><input name="teacherId" value=<%=teacher.getTeacherId() %>></td>
+					<td><input name="teacherId" value=<%=teacher.getTeacherId() %> required></td>
 				</tr>
 				<tr>	
 					<th>성함</th>
-					<td><input name="teacherName" value=<%=teacher.getTeacherName() %>></td>
+					<td><input name="teacherName" value=<%=teacher.getTeacherName() %> required></td>
 				</tr>
 				<tr>	
 					<th>메모</th>
-					<td><textarea name="teacherHistory" rows="3" cols="100"><%=teacher.getTeacherHistory() %></textarea></td>
+					<td><textarea name="teacherHistory" rows="3" cols="100" required><%=teacher.getTeacherHistory() %></textarea></td>
 				</tr>
 				<tr>	
 					<th>등록일자</th>

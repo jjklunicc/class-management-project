@@ -50,7 +50,7 @@ public class TeacherDao {
 		Connection conn = dbUtil.getConnection();
 		
 		// teacher 정보를 업데이트 하는 쿼리
-		String sql = "update teacher set teacher_id = ?, teacher_name = ?, teacher_history = ? where teacher_no = ?";
+		String sql = "update teacher set teacher_id = ?, teacher_name = ?, teacher_history = ?, updatedate = now() where teacher_no = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		
 		// ?값을 세팅

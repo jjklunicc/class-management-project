@@ -14,26 +14,6 @@
 
 	// 요청값 저장
 	int teacherNo = Integer.parseInt(request.getParameter("teacherNo"));
-
-	// 요청값 유효성 검사
-	String msg = null;
-	if(request.getParameter("teacherId") == null
-	|| request.getParameter("teacherId").equals("")){
-		msg = URLEncoder.encode("수정할 아이디를 입력하세요", "utf-8");
-	}else if(request.getParameter("teacherName") == null
-	|| request.getParameter("teacherName").equals("")){
-		msg = URLEncoder.encode("수정할 이름을 입력하세요", "utf-8");
-	}else if(request.getParameter("teacherHistory") == null
-	|| request.getParameter("teacherHistory").equals("")){
-		msg = URLEncoder.encode("수정할 메모를 입력하세요", "utf-8");
-	}
-	
-	if(msg != null){
-		response.sendRedirect(request.getContextPath() + "/updateTeacher.jsp?teacherNo=" + teacherNo);
-		return;
-	}
-	
-	// 요청값 저장
 	String teacherId = request.getParameter("teacherId");
 	String teacherName = request.getParameter("teacherName");
 	String teacherHistory = request.getParameter("teacherHistory");
